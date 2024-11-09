@@ -1,187 +1,82 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143196243-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-143196243-1');
-
-        gtag('event', 'play', {
-            'event_category': 'Server Name',
-            'event_action': 'Server',
-            'event_label': window.location.hostname
-        });
-        gtag('event', 'play', {
-            'event_category': 'Page Name',
-            'event_action': 'Page',
-            'event_label': 'count.html'
-        });
-    </script>
-    <!-- End Google Analytics -->
-    <title>Pengumuman SBMPTN LTMPT 2020</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="sbmptn.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/count.js"></script>
+    <link rel="icon" href="img/icon.png" />
+    <title>Ppad-1 Timer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="p-3 d-none d-sm-block">
-            <div class="row">
-                <div class="col-12 col-sm-5 d-none d-sm-block">
-                    <div class="text-center">
-                        <img src="images/logo-home.png" class="img-fluid" alt="Logo LTMPT" />
-                    </div>
-                </div>
-                <div class="col-10 col-sm-5 d-none d-sm-block">
-                    <div class="text-center">
-                        <img src="https://www.ltmpt.ac.id/images/sponsor.png" class="img-fluid" alt="Logo Sponsor" />
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="p-1 d-block d-sm-none">
-            <div class="row">
-                <div class="col-9 d-block d-sm-none">
-                    <div class="row ml-1 mt-2">
-                        <div class="col-12">
-                            <div class="text-center">
-                                <img src="images/logo-home.png" class="img-fluid" alt="Logo LTMPT" />
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="text-center">
-                                <img src="images/sponsor.png" class="img-fluid" alt="Logo Sponsor" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 d-block d-sm-none mt-2">
-                    <div class="text-center">
-                        <img src="images/indonesia-74.png" class="img-fluid" alt="Logo HUT Indonesia ke-74" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm">
-                <div class="header-bottom-line"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">
-                <div class="marquee"></div>
-            </div>
-        </div>
+<body onload="identify()">
+    <div class="lattern">
+        <img src="img/lattern.png" alt="" />
     </div>
-
-    <div class="container text-center">
-        <div class="void"></div>
-        <div class="row m-1">
-            <div class="col-sm-12">
-                <span class="title">PENGUMUMAN HASIL SELEKSI SBMPTN LTMPT 2021</span>
-            </div>
-        </div>
-        <div class="void"></div>
-        <div class="void"></div>
-        <div id="countdown">
-            <div>
-                <span class="hari"></span>
-                <div class="smalltext">Hari</div>
-            </div>
-            <div>
-                <span class="jam"></span>
-                <div class="smalltext">Jam</div>
-            </div>
-            <div>
-                <span class="menit"></span>
-                <div class="smalltext">Menit</div>
-            </div>
-            <div>
-                <span class="detik"></span>
-                <div class="smalltext">Detik</div>
-            </div>
-        </div>
-        <div class="void"></div>
-        <div class="void"></div>
-        <div id='jam'></div>
+    <div class="top">
+<!--        <p class="me-auto">
+            <a href="https://naemazam.com" target="_blank">
+					<b>Naem Azam</b>
+				</a>
+        </p>-->
+        <label class="switch ms-auto">
+				<input type="checkbox" id="switch" onchange="toggleCheck()" />
+				<span class="slider"></span>
+			</label>
     </div>
-
-    <script type='text/javascript' src="deadline.js"></script>
-    <script type="text/javascript">
-        var countglobal = 0;
-        var currenttime;
-        var deadline;
-
-        function getTimeRemaining(endtime) {
-            var saiki = new Date(Date.parse(sbmptn_current_time) + countglobal);
-            document.getElementById('jam').innerHTML = saiki.toString();
-            var t = Date.parse(endtime) - saiki;
-            //console.log(countglobal);
-            //console.log(t);
-            //console.log(saiki);
-            //console.log(endtime);
-            //console.log(sbmptn_current_time);
-            var seconds = Math.floor((t / 1000) % 60);
-            var minutes = Math.floor((t / 1000 / 60) % 60);
-            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
-            var days = Math.floor(t / (1000 * 60 * 60 * 24));
-            return {
-                'total': t,
-                'days': days,
-                'hours': hours,
-                'minutes': minutes,
-                'seconds': seconds
-            };
-        }
-
-        function initializeClock(id, endtime) {
-            var clock = document.getElementById(id);
-            var daysSpan = clock.querySelector('.hari');
-            var hoursSpan = clock.querySelector('.jam');
-            var minutesSpan = clock.querySelector('.menit');
-            var secondsSpan = clock.querySelector('.detik');
-
-            function updateClock() {
-                countglobal = countglobal + 1000;
-                var t = getTimeRemaining(endtime);
-
-                daysSpan.innerHTML = t.days;
-                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-
-                if (t.total <= 0) {
-                    window.location.href = '';
-                    clearInterval(timeinterval);
-                }
-            }
-
-            updateClock();
-            var timeinterval = setInterval(updateClock, 1000);
-        }
-
-        deadline = new Date(Date.parse(sbmptn_deadline_time));
-        currentime = new Date(Date.parse(sbmptn_current_time));
-        initializeClock('countdown', deadline);
-    </script>
-
-    <noscript>
-		<meta http-equiv="refresh" content="0; url=/nojs.html" />
-	</noscript>
+    <div class="mid">
+        <h1>Ppad - 1</h1>
+        <div class="d-flex">
+            <div class="card">
+                <h3 id="days"></h3>
+                <p>hari</p>
+            </div>
+            <div class="card">
+                <h3 id="hours"></h3>
+                <p>jam</p>
+            </div>
+            <div class="card">
+                <h3 id="minutes"></h3>
+                <p>menit</p>
+            </div>
+            <div class="card">
+                <h3 id="seconds"></h3>
+                <p>detik</p>
+            </div>
+        </div>
+<!--        <a href="mailto:#">
+				<img src="img/email.png" alt="Email" />
+			</a>
+        <a href="#">
+				<img src="img/linkedin.png" alt="LinkedIn" />
+			</a>
+        <a href="#">
+				<img src="img/ig.png" alt="Insta" />
+			</a>
+        <a href="https://github.com/naemazam">
+				<img src="img/github.png" alt="Github" />
+			</a>
+    </div>
+    <div class="bottom">
+        <a href="mailto:#">
+				<img src="img/email.png" alt="Email" />
+			</a>
+        <a href="#">
+				<img src="img/linkedin.png" alt="LinkedIn" />
+			</a>
+        <a href="#">
+				<img src="img/ig.png" alt="Insta" />
+			</a>
+        <a href="https://github.com/naemazam">
+				<img src="img/github.png" alt="Github" />
+			</a>
+    </div>
+    <div class="mosque">
+        <img src="img/mosque.png" alt="" /> -->
+    </div>
+    <script defer src="node_modules/@vercel/analytics/dist/index.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
