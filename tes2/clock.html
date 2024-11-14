@@ -88,7 +88,17 @@ function updateClock() {
     minutesRow.style.transform = `rotate(${minutes * 6}deg)`;
     minutesRow.innerHTML = createNumberSeries(minutes, minutesCount); // Use custom minutesCount
 
-    hoursRow.style.transform = `rotate(${(hours % 12) * 30}deg)`;
+    //hoursRow.style.transform = `rotate(${(hours % 12) * 30}deg)`;
+    //hoursRow.innerHTML = createNumberSeries(hours, hoursCount); // Use custom hoursCount
+    // Logic for adjusting hour numbers orientation
+    let hourAngle = (hours % 12) * 30;
+    if (hourAngle >= 90 && hourAngle <= 270) {
+        // If hour angle is between 90 and 270 degrees, flip the orientation
+        hoursRow.style.transform = `rotate(${hourAngle + 180}deg)`;
+    } else {
+        // Otherwise, keep the normal orientation
+        hoursRow.style.transform = `rotate(${hourAngle}deg)`;
+    }
     hoursRow.innerHTML = createNumberSeries(hours, hoursCount); // Use custom hoursCount
 }
 
