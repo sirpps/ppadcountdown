@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jam Analog dengan Deretan Angka</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    .clock {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        border: 10px solid #333;
+        border-radius: 50%;
+        background-color: white;
+    }
+    .number-row {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        color: black;
+    }
+    .seconds, .minutes, .hours {
+        position: absolute;
+        font-weight: bold;
+    }
+    .seconds { color: red; }
+    .minutes { color: blue; }
+    .hours { color: green; }
+</style>
+</head>
+<body>
+<div class="clock">
+    <div class="number-row seconds"></div>
+    <div class="number-row minutes"></div>
+    <div class="number-row hours"></div>
+</div>
+
+<script>
+function updateClock() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    const secondsRow = document.querySelector('.seconds');
+    const minutesRow = document.querySelector('.minutes');
+    const hoursRow = document.querySelector('.hours');
+
+    secondsRow.innerHTML = '';
+    minutesRow.innerHTML = '';
+    hoursRow.innerHTML = '';
+
+    // Function to create number series from center to edge
+    function createNumberSeries(count, maxLength) {
+        let series = '';
+        for (let i = 0; i < maxLength; i++) {
+            series += (count < 10 ? '0' + count : count) + ' ';
+        }
+        return series.trim();
+    }
+
+    // Update each row with numbers representing the current time
+    secondsRow.style.transform = `rotate(${seconds * 6}deg)`;
+    secondsRow.innerHTML = createNumberSeries(seconds, 30);
+
+    minutesRow.style.transform = `rotate(${minutes * 6}deg)`;
+    minutesRow.innerHTML = createNumberSeries(minutes, 24);
+
+    hoursRow.style.transform = `rotate(${(hours % 12) * 30}deg)`;
+    hoursRow.innerHTML = createNumberSeries(hours, 12);
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+</script>
+</body>
+  </html>
+  
