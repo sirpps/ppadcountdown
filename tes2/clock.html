@@ -86,7 +86,8 @@ function updateClock() {
     //secondsRow.innerHTML = createNumberSeries(seconds, secondsCount); // Use custom secondsCount
     // Logic to rotate seconds row based on position
     let secondsAngle = seconds * 6;
-    if (seconds >= 30) {
+    if (seconds >= 15 || seconds <= 45 {
+    //if (seconds >= 30) {
         // If seconds are in the bottom half (30-59), flip orientation
         secondsRow.style.transform = `rotate(${secondsAngle + 180}deg)`;
     } else {
