@@ -16,10 +16,10 @@ var x = setInterval(function() {
     // }
 }, 1000);*/
     // get hari query
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
 
 /*    const hari = getQueryParam('hari');
 
