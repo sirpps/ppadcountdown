@@ -59,6 +59,7 @@ function setCountdownDate() {
         default:
             countDownDate = new Date("22 Nov, 2024 07:00:00").getTime(); // default ke hari pertama
     }
+    alert("Countdown date set to: " + new Date(countDownDate));
     return countDownDate;
 }
 var countDownDate = setCountdownDate();
