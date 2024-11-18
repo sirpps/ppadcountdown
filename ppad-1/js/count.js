@@ -29,10 +29,10 @@ var x = setInterval(function() {
     } else if (hari === '2' || hari == 'kedua') {
         countDownDate = new Date("19 Nov, 2024 07:00:00").getTime();
     } else if (hari === '3' || hari == 'ketiga') {
-        countDownDate = new Date("19 Nov, 2024 07:00:00").getTime();
+        countDownDate = new Date("20 Nov, 2024 07:00:00").getTime();
     } else {
         // Default tanggal jika parameter tidak sesuai
-        countDownDate = new Date("18 Nov, 2024 07:00:00").getTime();
+        countDownDate = new Date("1 Jan, 2024 07:00:00").getTime();
     }
 
     // perhitungan
