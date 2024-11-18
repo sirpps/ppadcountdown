@@ -20,7 +20,8 @@ var x = setInterval(function() {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
-    const hari = getQueryParam('hari');
+
+/*    const hari = getQueryParam('hari');
 
     // define hari
     let countDownDate;
@@ -33,7 +34,33 @@ var x = setInterval(function() {
     } else {
         // Default tanggal jika parameter tidak sesuai
         countDownDate = new Date("1 Jan, 2024 07:00:00").getTime();
+    }*/
+
+function setCountdownDate() {
+    let hari = getQueryParam("hari");
+    let countDownDate;
+    switch (hari) {
+        case '1':
+        case 'pertama':
+            countDownDate = new Date("18 Nov, 2024 07:00:00").getTime();
+            break;
+        case '2':
+        case 'kedua':
+            countDownDate = new Date("19 Nov, 2024 07:00:00").getTime();
+            break;
+        case '3':
+        case 'ketiga':
+            countDownDate = new Date("20 Nov, 2024 07:00:00").getTime();
+            break;
+        case '4':
+        case 'keempat":
+            countDownDate = new Date("21 Nov, 2024 07:00:00").getTime();
+        default:
+            countDownDate = new Date("22 Nov, 2024 07:00:00").getTime(); // default ke hari pertama
     }
+    return countDownDate;
+}
+var countDownDate = setCountdownDate();
 
     // perhitungan
     var x = setInterval(function () {
