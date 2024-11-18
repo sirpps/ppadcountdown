@@ -55,6 +55,7 @@ function setCountdownDate() {
         case '4':
         case 'keempat':
             countDownDate = new Date("21 Nov, 2024 07:00:00").getTime();
+            break;
         default:
             countDownDate = new Date("22 Nov, 2024 07:00:00").getTime(); // default ke hari pertama
     }
