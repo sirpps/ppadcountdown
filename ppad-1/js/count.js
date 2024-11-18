@@ -63,26 +63,20 @@ function setCountdownDate() {
 var countDownDate = setCountdownDate();
 
     // perhitungan
-    var x = setInterval(function () {
-        var now = new Date().getTime();
-        var distance = countDownDate - now;
-
-        // Perhitungan hari, jam, menit, dan detik
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById("days").innerHTML = days;
-        document.getElementById("hours").innerHTML = hours;
-        document.getElementById("minutes").innerHTML = minutes;
-        document.getElementById("seconds").innerHTML = seconds;
-
-        // if done
-        /*if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("days").innerHTML = "0";
-            document.getElementById("hours").innerHTML = "0";
-            document.getElementById("minutes").innerHTML = "0";
-            document.getElementById("seconds").innerHTML = "0";
-        }
-    }, 1000);*/
+//var countDownDate = new Date("18 Nov, 2024 07:00:00").getTime();
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+    /* if (distance < 0) {
+    // 	clearInterval(x);
+    // 	document.getElementById("count").innerHTML = "Happy New Year 2024!";
+    // }
+}, 1000);*/
